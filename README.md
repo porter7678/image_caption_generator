@@ -27,7 +27,7 @@ NOTE: I am still actively updating this project and working on getting better re
 
 My results haven't been incredible yet. I have managed to get the model running and producing output, but the loss is plateauing after a while.
 
-Here is an example of output:
+Here is an example of output. The first line is the ground truth caption. The second line is the output of my model:
 ![Output screenshot](photos_for_readme/output_screenshot_dec_2019.png)
   
 It seems that the model may have been able to identify some important objects in the photo (the boy, his red clothes, the plants behind him), but the caption doesn't really match the image very well. It does at least look like the model somewhat understands the way a caption should be structured. The grammar is decent, but the actual content of the caption is pretty much nonsense.
