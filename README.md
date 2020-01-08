@@ -1,12 +1,13 @@
 # image_caption_generator
 Implementation of deep learning research paper "Show and Tell: A Neural Image Caption Generator"
 
+![Straw hat caption example](photos_for_readme/straw_hat_caption.png)
 ## Overview
-NOTE: I am still actively updating this project and working on getting better results.
+*NOTE: I am still actively updating this project and working on getting better results.*
 
 This project is my first attempt at building a deep learning application from scratch, start to finish. This project was not a premade lab for a class, and I worked on this project independently. 
 
-The foudation of my model is the paper "Show and Tell: A Neural Image Caption Generator" by Vinyals et al (2015). I wanted the exercise of reading, understanding, and implementing a research paper. My plan is to get a basic model running as described in the paper, and then optimize the model with newer techniques.
+The foudation of my model is the paper "Show and Tell: A Neural Image Caption Generator" by Vinyals et al. (2015). I wanted the exercise of reading, understanding, and implementing a research paper. My plan is to get a basic model running as described in the paper, and then optimize the model with newer techniques.
 
 The model receives an image as input and returns an appropriate caption for the image as output.
 
@@ -20,14 +21,19 @@ The dataset has ~8000 images with a recommended 6000/2000 training/validation sp
 
 
 ## Model
- Here is some stuff about the model.
+The paper doesn't include specifics on the CNN architecture, so I decided to use a pretrained DenseNet as the CNN in my model. The image encoding that is output by the CNN is the first input passed into an RNN with an LSTM at its core. I created a corpus dictionary of all the words in all the captions, and then passed in a tensor of the corresponding word indices for the caption to the LSTM. Finally I used a linear layer to output a distribution for dictionary indices. 
+
+For training, I used a method called teacher-forcer where rather than having the next word be predicted by the output of the previous LSTM block, you pass in the next correct word from the target caption as input to the LSTM. This method tends to produce better results in training.
+
+Loss is computed by...
+
 
 ## Current Results
-NOTE: I am still actively updating this project and working on getting better results.
+*NOTE: I am still actively updating this project and working on getting better results.*
 
 My results haven't been incredible yet. I have managed to get the model running and producing output, but the loss is plateauing after a while.
 
-Here is an example of output. The first line is the ground truth caption. The second line is the output of my model:
+Here is an example of output. The first line is the target caption. The second line is the output of my model:
 ![Output screenshot](photos_for_readme/output_screenshot_dec_2019.png)
   
 It seems that the model may have been able to identify some important objects in the photo (the boy, his red clothes, the plants behind him), but the caption doesn't really match the image very well. It does at least look like the model somewhat understands the way a caption should be structured. The grammar is decent, but the actual content of the caption is pretty much nonsense.
