@@ -3,7 +3,7 @@ Implementation of deep learning research paper "Show and Tell: A Neural Image Ca
 
 ![Straw hat caption example](photos_for_readme/straw_hat_caption.png)
 ## Overview
-*NOTE: I am still actively updating this project and working on getting better results.*
+*NOTE: This is still in progress, and I am working on getting better results.*
 
 This project is my first attempt at building a deep learning application from scratch, start to finish. This project was not a premade lab for a class, and I worked on this project independently. 
 
